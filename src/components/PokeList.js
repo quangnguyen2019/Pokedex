@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Button } from 'reactstrap';
 
 import './PokeList.css';
+import PokeListItem from './PokeListItem';
 
 export default class PokeList extends Component {
     constructor() {
@@ -22,10 +23,10 @@ export default class PokeList extends Component {
         let endPosition = this.startPosition + limit;
 
         for (let i = this.startPosition + 1; i <= endPosition; i++) {
-            let urlPokeForm = `https://pokeapi.co/api/v2/pokemon-form/${i}`;
+            let urlPokemon = `https://pokeapi.co/api/v2/pokemon/${i}`;
 
             axios
-                .get(urlPokeForm)
+                .get(urlPokemon)
                 .then((res) => {
                     this.setState(state => {
                         return {
@@ -34,26 +35,20 @@ export default class PokeList extends Component {
                     });
                 });
         }
-        // debugger;
+        
         this.startPosition = endPosition;
     }
 
     render() {
         const { pokemons } = this.state;
-        console.log(pokemons);
 
         return(
             <div className="poke-list">
-                { pokemons.map((item, index) => {
-                    return(
-                        <div className="poke-list-item" key={index}>
-                            <div className='poke-img'>
-                                <img src={item.sprites.front_default} alt=''/>
-                            </div>
-                            <div className="poke-name"> { item.name } </div>
-                        </div>
-                    );
-                })}
+                { 
+                    pokemons.map((item, index) => 
+                        <PokeListItem item={item} key={index} />
+                    )
+                }
 
                 <Button 
                     color="primary" outline 
