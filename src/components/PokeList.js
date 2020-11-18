@@ -1,44 +1,52 @@
 import { Component } from 'react';
 import axios from 'axios';
+import { Button } from 'reactstrap';
 
 import './PokeList.css';
 
 export default class PokeList extends Component {
     constructor() {
         super();
-        this.state = { pokeArr: [] }
+        this.state = {
+            pokemons: []
+        };
+        this.startPosition = 0;
     }
 
     componentDidMount() {
-        this.getData();
+        this.getData(20);
     }
 
-    getData() {
-        for (let i = 1; i <= 20; i++) {
-            let url = `https://pokeapi.co/api/v2/pokemon-form/${i}`;
+    getData(limit) {
+        // Get data each pokemon
+        let endPosition = this.startPosition + limit;
+
+        for (let i = this.startPosition + 1; i <= endPosition; i++) {
+            let urlPokeForm = `https://pokeapi.co/api/v2/pokemon-form/${i}`;
 
             axios
-                .get(url)
+                .get(urlPokeForm)
                 .then((res) => {
                     this.setState(state => {
                         return {
-                            pokeArr: [ ...state.pokeArr, res.data]
+                            pokemons: [ ...state.pokemons, res.data]
                         }
                     });
                 });
         }
+        // debugger;
+        this.startPosition = endPosition;
     }
-    
-    render() {
-        const { pokeArr } = this.state;
 
-        console.log(this.state.pokeArr);
+    render() {
+        const { pokemons } = this.state;
+        console.log(pokemons);
 
         return(
             <div className="poke-list">
-                { pokeArr.map((item) => {
+                { pokemons.map((item, index) => {
                     return(
-                        <div className="poke-list-item">
+                        <div className="poke-list-item" key={index}>
                             <div className='poke-img'>
                                 <img src={item.sprites.front_default} alt=''/>
                             </div>
@@ -46,6 +54,14 @@ export default class PokeList extends Component {
                         </div>
                     );
                 })}
+
+                <Button 
+                    color="primary" outline 
+                    className="mt-3 mb-5"
+                    onClick={() => this.getData(20)}
+                > 
+                    Load More 
+                </Button>
             </div>
         );
     }

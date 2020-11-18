@@ -6,7 +6,10 @@
 .poke-list-item {
     display: flex;
     align-items: center;
-    margin-bottom: 12px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0px 4px 9px 0 rgba(0,0,0,.1);
 }
 
 .poke-list-item .poke-img {
