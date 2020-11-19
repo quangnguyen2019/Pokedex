@@ -14,7 +14,15 @@ export default function PokeListItem(props) {
             <div className="poke-info">
                 <div className="poke-name mb-2"> { item.name } </div>
                 <div>
-                    <Badge color="success" pill> { item.types[0].type.name } </Badge>
+                    {
+                        item.types.map((value) => {
+                            return (
+                                <Badge color="success" pill className="mr-1"> 
+                                    { value.type.name }
+                                </Badge>
+                            );
+                        })
+                    }
                 </div>
             </div>
 
