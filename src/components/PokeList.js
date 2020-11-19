@@ -43,8 +43,6 @@ export default class PokeList extends Component {
         const { pokemons } = this.state;
         pokemons.sort((a, b) => a.id - b.id);
 
-        console.log(pokemons);
-
         return(
             <div className="poke-list">
                 { 
@@ -55,7 +53,7 @@ export default class PokeList extends Component {
 
                 <Button 
                     color="primary" outline 
-                    className="mt-3 mb-5"
+                    className="mt-3 mb-5 btn-load-more"
                     onClick={() => this.getData(20)}
                 > 
                     Load More 

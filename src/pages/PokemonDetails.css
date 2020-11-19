@@ -1,0 +1,28 @@
+.pokemon-details {
+    width: 600px;
+    margin: auto;
+}
+
+.pokemon-details .poke-img {
+    display: inline-block;
+    background: #f5f5f5;
+    border-radius: 50%;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.pokemon-details .poke-img img {
+    height: 105px;
+    width: 105px;
+}
+
+.pokemon-details .poke-name {
+    font-size: 23px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.pokemon-details  
+.poke-name::first-letter {
+    text-transform: uppercase;
+}

@@ -1,4 +1,5 @@
 import { Badge, Button } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 import './PokeListItem.css';
 
@@ -16,7 +17,13 @@ export default function PokeListItem(props) {
                     <Badge color="success" pill> { item.types[0].type.name } </Badge>
                 </div>
             </div>
-            <Button color="success" className="btn-view" outline> View </Button>
+
+            <Link 
+                className="btn btn-view btn-outline-success" 
+                to={`/pokemon/${item.id}`}
+            > 
+                View 
+            </Link>
         </div>
     );
 }
