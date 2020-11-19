@@ -17,12 +17,18 @@
     padding: 10px;
 }
 
-.poke-list-item .poke-name {
+.poke-list-item .poke-info {
+    text-align: left;
+}
+
+.poke-list-item .poke-info .poke-name {
     font-size: 21px;
     font-weight: 500;
 }
 
-.poke-list-item .poke-name::first-letter {
+.poke-list-item 
+.poke-info 
+.poke-name::first-letter {
     text-transform: uppercase;
 }
 

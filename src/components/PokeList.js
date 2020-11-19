@@ -1,9 +1,9 @@
 import { Component } from 'react';
-import axios from 'axios';
 import { Button } from 'reactstrap';
+import axios from 'axios';
 
-import './PokeList.css';
 import PokeListItem from './PokeListItem';
+import './PokeList.css';
 
 export default class PokeList extends Component {
     constructor() {
@@ -41,6 +41,9 @@ export default class PokeList extends Component {
 
     render() {
         const { pokemons } = this.state;
+        pokemons.sort((a, b) => a.id - b.id);
+
+        console.log(pokemons);
 
         return(
             <div className="poke-list">
