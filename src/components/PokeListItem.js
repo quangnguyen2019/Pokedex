@@ -1,4 +1,4 @@
-import { Badge, Button } from 'reactstrap';
+import { Badge } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
 import './PokeListItem.css';
@@ -15,9 +15,9 @@ export default function PokeListItem(props) {
                 <div className="poke-name mb-2"> { item.name } </div>
                 <div>
                     {
-                        item.types.map((value) => {
+                        item.types.map((value, index) => {
                             return (
-                                <Badge color="success" pill className="mr-1"> 
+                                <Badge color="success" pill className="mr-1" key={index}> 
                                     { value.type.name }
                                 </Badge>
                             );

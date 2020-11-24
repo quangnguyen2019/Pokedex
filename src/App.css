@@ -2,6 +2,20 @@
   text-align: center;
 }
 
+.App .spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.App .btn-load-more {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
